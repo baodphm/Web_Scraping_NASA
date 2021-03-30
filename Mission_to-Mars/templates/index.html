@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset ="UTF-8">
+    <meta name ="viewport" content="width-device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Scraping App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Mars</h1>
+            <p>It's Mars</p>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">PUSH ME</a></p>
+        </div>
+        <img src ="{{ mars_data.featured_image_url }}" alt="Mars">
+        <h1>{{ mars_data.news_title }}</h1>
+        <p>{{ mars_data.news_p }}</p>
+        </div>
+    </div>
+    
+    <div class ="row">
+        <div class="col-md-4">
+            {{ mars_data.facts_table | safe }}
+        </div>
+    </div>
+
+    <div class="row">
+
+        {% for hemi in mars_data.hemispheres%}
+        <div class="col-md-3">
+            <h3>{{ hemi.title }}</h3>
+            <img src="{{ hemi.img_url }}" alt="">
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+</html>
